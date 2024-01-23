@@ -57,12 +57,15 @@ const SignUpForm = () => {
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Display Name"
-          type="text"
-          required
-          onChange={handleChange}
-          name="displayName"
-          value={displayName}
+          inputOptions={{
+            type: "text",
+            required: true,
+            onChange: handleChange,
+            name: "displayName",
+            value: displayName,
+          }}
         />
+        {/*
         <FormInput
           label="Email"
           type="email"
@@ -87,6 +90,7 @@ const SignUpForm = () => {
           name="confirmPassword"
           value={confirmPassword}
         />
+        */}
         <button type="submit">Sign Up</button>
       </form>
     </div>
