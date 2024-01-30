@@ -45,17 +45,19 @@ export const db = getFirestore();
 
 export const addCollectionAndDocuments = async (
   collectionKey,
-  objectsToAdd
+  objectsToAdd,
+  field = "title"
 ) => {
   const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
 
-  /**
-   * Duck: 1000 => 900
-   * -100
-   *
-   * Mango: 1000 => 1100 / 1100 Failed
-   * +100
-   */
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object[field].toLowerCase());
+    batch.set(docRef, object);
+  });
+
+  await batch.commit();
+  console.log("done");
 };
 
 export const createUserDocumentFromAuth = async (
