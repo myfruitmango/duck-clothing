@@ -4,24 +4,27 @@ import { getCategoriesAndDocuments } from "../utils/firebase/firebase.utils.js";
 
 // import SHOP_DATA from "../shop-data.js";
 
-export const ProductContext = createContext({
-  product: [],
+export const CategoriesContext = createContext({
+  categoriesMap: {},
 });
 
-export const ProductsProvider = ({ children }) => {
-  const [products, setProducts] = useState([]);
+export const CategoriesProvider = ({ children }) => {
+  const [categoriesMap, setCategoriesMap] = useState({});
 
   useEffect(() => {
     const getCategoriesMap = async () => {
       const categoryMap = await getCategoriesAndDocuments();
       console.log(categoryMap);
+      setCategoriesMap(categoryMap);
     };
     getCategoriesMap();
     // addCollectionAndDocuments("categories", SHOP_DATA);
   }, []);
 
-  const value = { products };
+  const value = { categoriesMap };
   return (
-    <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
+    <CategoriesContext.Provider value={value}>
+      {children}
+    </CategoriesContext.Provider>
   );
 };
