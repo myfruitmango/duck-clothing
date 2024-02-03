@@ -110,7 +110,7 @@ export const CartProvider = ({ children }) => {
       createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {
         cartItems: newCartItems,
         cartTotal: newCartTotal,
-        newCartCount: newCartCount,
+        cartCount: newCartCount,
       })
     );
     /*
