@@ -131,9 +131,9 @@ export const onAuthStateChangedListener = (callback) =>
 
 export const getCurrentUser = () => {
   return new Promise((resolve, reject) => {
-    const unSubscribe = onAuthStateChanged(
+    const unsubscribe = onAuthStateChanged(
       auth, (userAuth) => {
-        unSubscribe()
+        unsubscribe()
         resolve(userAuth)
       },
       reject
