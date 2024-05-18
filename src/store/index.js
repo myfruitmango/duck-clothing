@@ -11,8 +11,8 @@ import { rootSaga } from "./saga";
 const persistConfig = {
   key: "root",
   storage,
-  // blacklist: ["user"],
-  whitelist: ["cart"],
+  // whitelist: ["cart"],
+  blacklist: ["user"],
 };
 
 const sagaMiddleware = createSagaMiddleware();

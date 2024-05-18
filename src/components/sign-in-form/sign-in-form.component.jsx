@@ -36,7 +36,7 @@ const SignInForm = () => {
       if (error.code === "auth/invalid-credential") {
         alert("incorrect email or password");
       } else {
-        console.log(error);
+        console.error(error);
       }
     }
   };
