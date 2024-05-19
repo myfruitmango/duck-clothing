@@ -42,6 +42,6 @@ export function* onCheckUserSession() {
   yield takeLatest(USER_ACTION_TYPES.CHECK_USER_SESSION, isUserAuthenticated)
 }
 
-export function* UserSaga() {
-  yield all([call(onCheckUserSession), call([onGoogleSignStart])])
+export function* userSagas() {
+  yield all([call(onCheckUserSession), call(onGoogleSignStart)])
 }
