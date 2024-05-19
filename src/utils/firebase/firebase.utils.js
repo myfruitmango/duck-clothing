@@ -101,7 +101,6 @@ export const createUserDocumentFromAuth = async (
   }
 
   // if user data exists
-  // return userDocRef
   return userDocRef;
 };
 
@@ -131,9 +130,9 @@ export const onAuthStateChangedListener = (callback) =>
 
 export const getCurrentUser = () => {
   return new Promise((resolve, reject) => {
-    const unSubscribe = onAuthStateChanged(
+    const unsubscribe = onAuthStateChanged(
       auth, (userAuth) => {
-        unSubscribe()
+        unsubscribe()
         resolve(userAuth)
       },
       reject

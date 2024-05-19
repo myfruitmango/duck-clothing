@@ -11,7 +11,7 @@ import { rootSaga } from "./saga";
 const persistConfig = {
   key: "root",
   storage,
-  // whitelist: ["cart"],
+  whitelist: ["cart"],
   // blacklist: ["user"],
 };
 
