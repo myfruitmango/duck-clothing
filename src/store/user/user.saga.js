@@ -27,7 +27,7 @@ export function* signInWithGoogle() {
 export function* signInWithEmail({ payload: { email, password } }) {
   try {
     const { user } = yield call(signInAuthUserWithEmailAndPassword, email, password)
-    yield call(getSnapshotFromUserAuth(user))
+    yield call(getSnapshotFromUserAuth, user)
   } catch (error) {
     yield put(signInFailed(error))
   }
