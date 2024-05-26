@@ -61,11 +61,11 @@ export function* signOut() {
   }
 }
 
-export function* signAfterSignUp({ payload: { user, additionalDetals } }) {
-  yield call(getSnapshotFromUserAuth, user, additionalDetals)
+export function* signInAfterSignUp({ payload: { user, additionalDetails } }) {
+  yield call(getSnapshotFromUserAuth, user, additionalDetails)
 }
 
-export function* onGoogleSignStart() {
+export function* onGoogleSignInStart() {
   yield takeLatest(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START, signInWithGoogle)
 }
 
@@ -77,12 +77,12 @@ export function* onEmailSignInStart() {
   yield takeLatest(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, signInWithEmail)
 }
 
-export function* signUpStart() {
+export function* onSignUpStart() {
   yield takeLatest(USER_ACTION_TYPES.SIGN_UP_START, signUp)
 }
 
 export function* onSignUpSuccess() {
-  yield takeLatest(USER_ACTION_TYPES.SIGN_UP_SUCCESS, signAfterSignUp)
+  yield takeLatest(USER_ACTION_TYPES.SIGN_UP_SUCCESS, signInAfterSignUp)
 }
 
 export function* onSignOutStart() {
@@ -90,5 +90,5 @@ export function* onSignOutStart() {
 }
 
 export function* userSagas() {
-  yield all([call(onCheckUserSession), call(onGoogleSignStart), call(onEmailSignInStart), call(signUpStart), call(onSignUpSuccess), call(onSignOutStart)])
+  yield all([call(onCheckUserSession), call(onGoogleSignInStart), call(onEmailSignInStart), call(onSignUpStart), call(onSignUpSuccess), call(onSignOutStart)])
 }
