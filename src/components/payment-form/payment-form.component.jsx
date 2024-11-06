@@ -14,7 +14,7 @@ const PaymentForm = () => {
     if (!stripe  || !elements) {
       return
     }
-  }
+  /}
 
   return (
     <PaymentFormContainer>
